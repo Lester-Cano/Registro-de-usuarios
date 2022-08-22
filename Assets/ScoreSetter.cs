@@ -53,12 +53,12 @@ public class ScoreSetter : MonoBehaviour
     public void UploadPoints()
     {
         token = PlayerPrefs.GetString("token");
-        UserData userData = new UserData();
+        UserData data = new UserData();
 
-        userData.username = PlayerPrefs.GetString("username");
-        userData.score = PlayerPrefs.GetInt("High Score");
+        data.username = PlayerPrefs.GetString("username");
+        data.score = PlayerPrefs.GetInt("High Score");
 
-        string postData = JsonUtility.ToJson(userData);
+        string postData = JsonUtility.ToJson(data);
 
         StartCoroutine(SetScore(postData));
     }

@@ -16,8 +16,6 @@ public class HttpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetString("token", null);
-
         Token = PlayerPrefs.GetString("token");
         Username = PlayerPrefs.GetString("username");
         Debug.Log("Token: " + Token);
@@ -140,7 +138,7 @@ public class HttpManager : MonoBehaviour
 
             PlayerPrefs.SetString("token", resData.token);
             PlayerPrefs.SetString("username", resData.usuario.username);
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         else
         {
@@ -168,7 +166,7 @@ public class HttpManager : MonoBehaviour
 
             Debug.Log("Token valido " + resData.usuario.username + ", id:" + resData.usuario._id);
 
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         else
         {
