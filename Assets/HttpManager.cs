@@ -16,12 +16,13 @@ public class HttpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetString("token", null);
 
         Token = PlayerPrefs.GetString("token");
         Username = PlayerPrefs.GetString("username");
         Debug.Log("Token: " + Token);
 
-        StartCoroutine(GetProfile());
+        StartCoroutine(GetPerfil());
 
     }
 
@@ -148,7 +149,7 @@ public class HttpManager : MonoBehaviour
         }
     }
 
-    IEnumerator GetProfile()
+    IEnumerator GetPerfil()
     {
         string url = URL + "/api/usuarios/" + Username;
         UnityWebRequest www = UnityWebRequest.Get(url);
@@ -175,8 +176,8 @@ public class HttpManager : MonoBehaviour
             Debug.Log(www.downloadHandler.text);
         }
     }
-
-    IEnumerator SignUp()
+    /*
+    IEnumerator SetScore()
     {
         Debug.Log("PATCH SCORE: ");
 
@@ -195,10 +196,9 @@ public class HttpManager : MonoBehaviour
         }
         else if (www.responseCode == 200)
         {
-            //Debug.Log(www.downloadHandler.text);
             AuthData resData = JsonUtility.FromJson<AuthData>(www.downloadHandler.text);
 
-            Debug.Log("Bienvenido " + resData.usuario.username + ", id:" + resData.usuario._id);
+            Debug.Log("Token valido " + resData.usuario.username + ", id:" + resData.usuario._id + " Score: " + resData.usuario.score);
         }
         else
         {
@@ -206,7 +206,7 @@ public class HttpManager : MonoBehaviour
             Debug.Log(www.downloadHandler.text);
         }
     }
-
+    */
 }
 
 
